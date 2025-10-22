@@ -10,7 +10,6 @@ impactan en el peso de las personas.
 **Requerimiento** De una rutina se espera poder calcular cuantas calorías quema durante el 
 tiempo que se practique.
 
-
 En este sistema se contemplan 4 tipos de rutina: Running, Maratón, Remo y Remo
 de competición.
 
