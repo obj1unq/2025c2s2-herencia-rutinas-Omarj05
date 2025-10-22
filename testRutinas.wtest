@@ -1,42 +1,42 @@
 import rutinas.*
 
 describe "Running" {
-    const running = new Running( intensidad = 1.2 )
+    const correrEnLaPlaya = new Running( intensidad = 1.2 )
 
-    test "descanso segun tiempo" {
-        assert.equals(360, running.calorias(5))
+    test "calorias" {
+        assert.equals(360, correrEnLaPlaya.calorias(5))
 
-        assert.equals(10200, running.calorias(90))
+        assert.equals(10200, correrEnLaPlaya.calorias(90))
     }
 }
 
 describe "Marathon" {
-    const marathon = new Marathon( intensidad = 1.5)
+    const marathonDeBA = new Marathon( intensidad = 1.5)
 
     test "calorias" {
-        assert.equals(900, marathon.calorias(5))
+        assert.equals(900, marathonDeBA.calorias(5))
 
-        assert.equals(25500, marathon.calorias(90))
+        assert.equals(25500, marathonDeBA.calorias(90))
     }
 }
 
 describe "Remo Normal" {
-    const remo = new RemoNormal()
+    const remarEnElDelta = new RemoNormal()
 
     test "calorias" {
-        assert.equals(520, remo.calorias(5))
+        assert.equals(520, remarEnElDelta.calorias(5))
 
-        assert.equals(9360, remo.calorias(90))
+        assert.equals(9360, remarEnElDelta.calorias(90))
     }
 }
 
 describe "Remo de Competicion" {
-    const remo = new RemoDeCompeticion()
+    const remarEnElCaminoDeLosRemeros = new RemoDeCompeticion()
 
     test "calorias" {
-        assert.equals(510, remo.calorias(5))
+        assert.equals(510, remarEnElCaminoDeLosRemeros.calorias(5))
 
-        assert.equals(12750, remo.calorias(90))
+        assert.equals(12750, remarEnElCaminoDeLosRemeros.calorias(90))
     }
 }
 

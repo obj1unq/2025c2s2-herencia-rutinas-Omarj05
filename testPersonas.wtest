@@ -1,0 +1,60 @@
+import personas.*
+import rutinas.*
+
+describe "Persona Sendentaria" {
+    const calamardo = new PersonaSedentaria(peso = 60, tiempoDeDuracionElegido = 5)
+    const correrEnLaPlaya = new Running(intensidad = 1.2)
+    const marathonDeBA = new Marathon(intensidad = 1.5)
+    const remarEnElDelta = new RemoNormal()
+    const remarElElCaminoDeLosRemeros = new RemoDeCompeticion()
+
+
+    test "running" {
+        calamardo.realizarRutina(correrEnLaPlaya)
+        
+        assert.equals(59.948, calamardo.peso())
+    }
+
+    test "marathon" {
+        calamardo.realizarRutina(marathonDeBA)
+        assert.equals(59.871, calamardo.peso())
+    }
+
+    test "remo normal" {
+        calamardo.realizarRutina(remarEnElDelta)
+        assert.equals(59.925, calamardo.peso())
+    }
+
+    test "remo de competicion" {
+        calamardo.realizarRutina(remarElElCaminoDeLosRemeros)
+        assert.equals(59.927, calamardo.peso())
+    }
+}
+
+describe "Persona Atleta" {
+    const bob = new PersonaAtleta(peso = 40)
+    const correrEnLaPlaya = new Running(intensidad = 1.2)
+    const marathonDeBA = new Marathon(intensidad = 1.5)
+    const remarEnElDelta = new RemoNormal()
+    const remarElElCaminoDeLosRemeros = new RemoDeCompeticion()
+
+
+    test "running" {
+        bob.realizarRutina(correrEnLaPlaya)
+        assert.equals(39.725, bob.peso())
+    }
+
+    test "marathon" {
+        bob.realizarRutina(marathonDeBA)
+        assert.equals(37.812, bob.peso())
+    }
+
+    test "remo normal" {
+        assert.throwsException({bob.realizarRutina(remarEnElDelta)})
+    }
+
+    test "remo de competicion" {
+        bob.realizarRutina(remarElElCaminoDeLosRemeros)
+        assert.equals(39.406, bob.peso())
+    }
+}
