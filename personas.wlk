@@ -10,12 +10,22 @@ class PersonaQueEntrena {
 
     method pesoPorCalorias()
 
-    method validarRutina(rutina)
+    method validarRutina(rutina) {
+        if (self.puedePracticar(rutina)) {
+            self.error("No puede practicar esa rutina.")
+        }
+    } //se puede hacer un method hook que sea lo que los hijos cambian
+
+    method puedePracticar(rutina)
 
     method peso() { return peso.truncate(3) }
 
     method calcularPesoPerdidoRealizando(rutina) {
-        return (rutina.calorias(self.tiempoDeDuracionElegido()) / self.pesoPorCalorias())
+        return self.calorias(rutina) / self.pesoPorCalorias()
+    }
+
+    method calorias(rutina) {
+        return rutina.calorias(self.tiempoDeDuracionElegido())
     }
 
     method tiempoDeDuracionElegido()
@@ -27,10 +37,8 @@ class PersonaSedentaria inherits PersonaQueEntrena {
     
     override method pesoPorCalorias() { return 7000 }
 
-    override method validarRutina(rutina) {
-        if (!(peso > 50)) {
-            self.error("No hare la rutina pues no estoy gordo.")
-        }
+    override method puedePracticar(rutina) {
+        return !(peso > 50)
     }
 }
 
@@ -44,9 +52,7 @@ class PersonaAtleta inherits PersonaQueEntrena {
 
     override method tiempoDeDuracionElegido() { return 90 }
 
-    override method validarRutina(rutina) {
-        if (!(rutina.calorias(self.tiempoDeDuracionElegido()) > 10000) ) {
-            self.error("No hare la rutina porque gastaría menos de 10000 calorias.")
-        }
+    override method puedePracticar(rutina) {
+        return (!(self.calorias(rutina) > 10000) )
     }
 }
